@@ -162,43 +162,56 @@
 //     });
 // }
 
-rowItem = 5;
-counter = 1;
-const addFriend = (news) => {
-    debugger;
-    if (counter >= rowItem - 1) {
-        document.getElementById("friend-detail").style.display = 'none';
-    }
-    var cloneCopy = document.getElementById("news-letter-form").children[0];
-    var name = document.getElementById('name').value;
-    var surname = document.getElementById('surname').value;
-    var email = document.getElementById('email').value;
-    var clone = cloneCopy.cloneNode(true);
-    clone.id = counter++;
-    clone.name = clone.id + name;
-    clone.surname = clone.id + surname;
-    clone.email = clone.id + email;
-    document.getElementById('news-letter-form-generate').appendChild(clone);
+// rowItem = 5;
+// counter = 1;
+// const addFriend = (news) => {
+//     debugger;
+//     if (counter >= rowItem - 1) {
+//         document.getElementById("friend-detail").style.display = 'none';
+//     }
+//     var cloneCopy = document.getElementById("news-letter-form").children[0];
+//     var name = document.getElementById('name').value;
+//     var surname = document.getElementById('surname').value;
+//     var email = document.getElementById('email').value;
+//     var clone = cloneCopy.cloneNode(true);
+//     clone.id = counter++;
+//     clone.news_name = name;
+//     clone.news_surname =  surname;
+//     clone.news_email = email;
+//     document.getElementById('news-letter-form-generate').appendChild(clone);
+
+//     clone.find('.news_surname').html( 'put new value here' );
+// }
+
+var i = 0;
+
+ addFriend = () =>{
+     var a = document.getElementById('delete');
+    var original = document.getElementById('friend-detail' + i);
+    var clone = original.cloneNode(true);
+    i++;
+    clone.id = 'friend-detail' + i;
+    clone.getElementsByTagName('input')[0].id = "news__inline-label" + i;
+   // clone.getElementById('delete');
+    original.appendChild(clone);
+
 }
 
 //Delete News List
 deleteNewsList = (value) => {    
-     value.parentNode.parentNode.removeChild(value.parentElement);
-    // const node = document.getElementById("news-letter-form-generate");
-    // if(node.childNodes.length === 0) {
-    //     value.parentNode.parentNode.removeChild(value.parentElement);
-    // }
-    // else {
-    //     node.childNodes.forEach((element) => {
-    //         if (value.parentElement.id === element.id) {
-    //             value.parentNode.parentNode.removeChild(value.parentElement);
-    //         }
+    const node = document.getElementById("news-letter-form-generate");
 
-    //         counter--;
-    //     });
-    // }
+        node.childNodes.forEach((element) => {
+            if (value.parentElement.id === element.id) {
+                value.parentNode.parentNode.removeChild(value.parentElement);
+            }
 
+            counter--;
+        });
+    }
 
+sendFriendDetail = (sendItem) => {
+    console.log(sendItem);
 }
 
 
